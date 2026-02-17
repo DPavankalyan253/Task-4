@@ -1,0 +1,199 @@
+1️⃣ How does Logistic Regression differ from Linear Regression?
+Linear Regression	Logistic Regression
+Used for regression (continuous output)	Used for classification (categorical output)
+Output is any real number	Output is probability (0–1)
+Uses Least Squares (MSE)	Uses Log Loss (Cross-Entropy)
+Fits a straight line	Uses sigmoid curve
+
+Short interview answer:
+
+Linear regression predicts continuous values, while logistic regression predicts class probabilities using the sigmoid function.
+
+2️⃣ What is the Sigmoid Function?
+
+The sigmoid (logistic) function is:
+
+𝜎
+(
+𝑧
+)
+=
+1
+1
++
+𝑒
+−
+𝑧
+σ(z)=
+1+e
+−z
+1
+	​
+
+
+It:
+
+Converts any number into range 0 to 1
+
+Produces an S-shaped curve
+
+Interprets output as probability
+
+Visual Shape
+4
+
+Interview line:
+
+The sigmoid function maps linear output into probability space between 0 and 1.
+
+3️⃣ What is Precision vs Recall?
+🔹 Precision
+𝑃
+𝑟
+𝑒
+𝑐
+𝑖
+𝑠
+𝑖
+𝑜
+𝑛
+=
+𝑇
+𝑃
+𝑇
+𝑃
++
+𝐹
+𝑃
+Precision=
+TP+FP
+TP
+	​
+
+
+Out of predicted positives, how many were correct?
+
+🔹 Recall
+𝑅
+𝑒
+𝑐
+𝑎
+𝑙
+𝑙
+=
+𝑇
+𝑃
+𝑇
+𝑃
++
+𝐹
+𝑁
+Recall=
+TP+FN
+TP
+	​
+
+
+Out of actual positives, how many did we correctly detect?
+
+When to prioritize?
+
+High Precision → Spam detection
+
+High Recall → Disease detection
+
+4️⃣ What is the ROC-AUC Curve?
+
+ROC Curve:
+
+X-axis → False Positive Rate
+
+Y-axis → True Positive Rate
+
+AUC:
+
+Area under the ROC curve
+
+Measures class separability
+
+ROC Curve Example
+4
+
+Interpretation:
+
+0.5 → Random
+
+0.7–0.8 → Good
+
+0.9+ → Excellent
+
+5️⃣ What is a Confusion Matrix?
+
+It compares actual vs predicted values.
+
+	Predicted 0	Predicted 1
+Actual 0	TN	FP
+Actual 1	FN	TP
+Visual Example
+4
+
+It helps calculate:
+
+Accuracy
+
+Precision
+
+Recall
+
+F1-score
+
+6️⃣ What happens if classes are imbalanced?
+
+If one class is much larger:
+
+Accuracy becomes misleading
+
+Model may predict majority class only
+
+Example:
+
+If 95% are negative:
+Model predicts all negative → 95% accuracy 😬 but useless.
+
+Solutions:
+
+Use class_weight='balanced'
+
+Use SMOTE (oversampling)
+
+Use Precision/Recall instead of Accuracy
+
+Adjust threshold
+
+7️⃣ How do you choose the threshold?
+
+Default threshold = 0.5
+
+You adjust based on business needs:
+
+Lower threshold → Higher Recall
+
+Higher threshold → Higher Precision
+
+Often chosen using:
+
+ROC Curve
+
+Precision-Recall Curve
+
+Business cost analysis
+
+8️⃣ Can Logistic Regression be used for Multi-class problems?
+
+✅ Yes.
+
+Two methods:
+
+One-vs-Rest (OvR) – default in sklearn
+
+Softmax (Multinomial Logistic Regression)
